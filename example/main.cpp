@@ -3,10 +3,6 @@
 #include "cinder/gl/gl.h"
 #include "cinder/Easing.h"
 
-#include <fstream>
-#include <string>
-#include <iterator>
-
 using namespace ci;
 using namespace ci::app;
 
@@ -25,13 +21,13 @@ void BasicApp::setup() {
     // Make sure that window initially on top
     getWindow()->setAlwaysOnTop(true);
 
-    mCam.lookAt(vec3(3, 2, 3), vec3(0));
+    mCam.lookAt(vec3(4, 3, 4), vec3(0));
 
     mGlsl = gl::GlslProg::create(gl::GlslProg::Format()
             .vertex(loadAsset("vertex.glsl"))
             .fragment(loadAsset("fragment.glsl")));
 
-    auto plane = geom::Plane().subdivisions(ivec2(30));
+    auto plane = geom::Plane().subdivisions(ivec2(100)).size(vec2(3, 3));
     mRect = gl::Batch::create(plane, mGlsl);
 
     gl::enableDepthRead();
@@ -44,8 +40,7 @@ void BasicApp::draw() {
     gl::clear(Color(0.2f, 0.2f, 0.2f));
     gl::setMatrices(mCam);
 
-    mGlsl->uniform("uCheckSize", 30.0f);
-    mGlsl->uniform("uAnim", getElapsedFrames() / 30.0f);
+    mGlsl->uniform("uAnim", getElapsedFrames() / 60.0f);
     mRect->draw();
 }
 
