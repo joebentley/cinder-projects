@@ -1,35 +1,51 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
+#include "cinder/Easing.h"
+
+#include <fstream>
+#include <string>
+#include <iterator>
 
 using namespace ci;
 using namespace ci::app;
 
 class BasicApp : public App {
 public:
+    void setup() override;
     void draw() override;
+
+private:
+    CameraPersp mCam;
+    gl::BatchRef mRect;
+    gl::GlslProgRef mGlsl;
 };
 
-void BasicApp::draw()
-{
-    gl::clear();
-    // reset the matrices
-    gl::setMatricesWindow( getWindowSize() );
+void BasicApp::setup() {
+    // Make sure that window initially on top
+    getWindow()->setAlwaysOnTop(true);
 
-    // move to the horizontal window center, down 75
-    gl::translate( getWindowCenter().x, 75 );
-    gl::color( Color( 1, 0, 0 ) );
-    gl::drawSolidCircle( vec2( 0 ), 70 );
+    mCam.lookAt(vec3(3, 2, 3), vec3(0));
 
-    // move down 150 pixels
-    gl::translate( 0, 150 );
-    gl::color( Color( 1, 1, 0 ) );
-    gl::drawSolidCircle( vec2( 0 ), 70 );
+    mGlsl = gl::GlslProg::create(gl::GlslProg::Format()
+            .vertex(loadAsset("vertex.glsl"))
+            .fragment(loadAsset("fragment.glsl")));
 
-    // move down another 150 pixels
-    gl::translate( 0, 150 );
-    gl::color( Color( 0, 1, 0 ) );
-    gl::drawSolidCircle( vec2( 0 ), 70 );
+    auto plane = geom::Plane().subdivisions(ivec2(30));
+    mRect = gl::Batch::create(plane, mGlsl);
+
+    gl::enableDepthRead();
+    gl::enableDepthWrite();
 }
 
-CINDER_APP( BasicApp, RendererGl )
+void BasicApp::draw() {
+    getWindow()->setAlwaysOnTop(false);
+
+    gl::clear(Color(0.2f, 0.2f, 0.2f));
+    gl::setMatrices(mCam);
+
+    mGlsl->uniform("uCheckSize", 30.0f);
+    mRect->draw();
+}
+
+CINDER_APP( BasicApp, RendererGl(RendererGl::Options().msaa(16)) )
