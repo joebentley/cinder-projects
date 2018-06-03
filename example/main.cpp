@@ -13,8 +13,9 @@ public:
 
 private:
     CameraPersp mCam;
-    gl::BatchRef mRect;
+    gl::BatchRef mPlane;
     gl::GlslProgRef mGlsl;
+    gl::BatchRef mCube;
 };
 
 void BasicApp::setup() {
@@ -27,8 +28,11 @@ void BasicApp::setup() {
             .vertex(loadAsset("vertex.glsl"))
             .fragment(loadAsset("fragment.glsl")));
 
-    auto plane = geom::Plane().subdivisions(ivec2(100)).size(vec2(3, 3));
-    mRect = gl::Batch::create(plane, mGlsl);
+    auto plane = geom::Plane().subdivisions(ivec2(200)).size(vec2(3, 3));
+    mPlane = gl::Batch::create(plane, mGlsl);
+
+    auto cube = geom::Cube().size(vec3(0.2));
+    mCube = gl::Batch::create(cube, gl::getStockShader(gl::ShaderDef().lambert()));
 
     gl::enableDepthRead();
     gl::enableDepthWrite();
@@ -40,8 +44,14 @@ void BasicApp::draw() {
     gl::clear(Color(0.2f, 0.2f, 0.2f));
     gl::setMatrices(mCam);
 
-    mGlsl->uniform("uAnim", getElapsedFrames() / 60.0f);
-    mRect->draw();
+    const float anim = getElapsedFrames() / 60.0f;
+    mGlsl->uniform("uAnim", anim);
+    const vec3 lightSource = vec3(sin(M_PI * anim), 1.0f, cos(M_PI * anim));
+    mGlsl->uniform("uLightCoord", lightSource);
+    mPlane->draw();
+
+    gl::translate(lightSource);
+    mCube->draw();
 }
 
 CINDER_APP( BasicApp, RendererGl(RendererGl::Options().msaa(16)) )
