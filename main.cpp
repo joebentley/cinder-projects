@@ -45,6 +45,7 @@ void BasicApp::draw() {
     gl::setMatrices(mCam);
 
     mGlsl->uniform("uCheckSize", 30.0f);
+    mGlsl->uniform("uAnim", getElapsedFrames() / 30.0f);
     mRect->draw();
 }
 
