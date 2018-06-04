@@ -7,7 +7,7 @@ out vec4 oColor;
 
 in VertexData {
     float Offset;
-    vec3 Position;
+    vec3 Normal;
 } VertexIn;
 
 vec3 hsv2rgb(vec3 c) {
@@ -17,11 +17,7 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 void main(void) {
-    vec3 X = dFdx(VertexIn.Position);
-    vec3 Y = dFdy(VertexIn.Position);
-    vec3 normal = cross(X, Y);
-
     vec3 color = hsv2rgb(vec3(mod(VertexIn.Offset + 0.1 * uAnim, 1.0), 1.0, 1.0));
-    color *= clamp(dot(normalize(uLightCoord), normalize(normal)), 0.1, 1.0);
+    color *= clamp(dot(uLightCoord, VertexIn.Normal), 0.1, 1.0);
     oColor = vec4(color, 1);
 }

@@ -29,7 +29,7 @@ void BasicApp::setup() {
             .geometry(loadAsset("geometry.glsl"))
             .fragment(loadAsset("fragment.glsl")));
 
-    auto plane = geom::Plane().subdivisions(ivec2(200)).size(vec2(3, 3));
+    auto plane = geom::Plane().subdivisions(ivec2(10)).size(vec2(3, 3));
     mPlane = gl::Batch::create(plane, mGlsl);
 
     auto cube = geom::Cube().size(vec3(0.2));
@@ -48,7 +48,7 @@ void BasicApp::draw() {
     const float anim = getElapsedFrames() / 60.0f;
     mGlsl->uniform("uAnim", anim);
     const vec3 lightSource = vec3(sin(M_PI * anim), 1.0f, cos(M_PI * anim));
-    mGlsl->uniform("uLightCoord", lightSource);
+    mGlsl->uniform("uLightCoord", glm::normalize(lightSource));
     mPlane->draw();
 
     gl::translate(lightSource);
