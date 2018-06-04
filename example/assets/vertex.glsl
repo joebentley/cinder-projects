@@ -1,13 +1,15 @@
 #version 400
 #define M_PI 3.1415926535897932384626433832795
 
+uniform float uAnim;
 uniform mat4 ciModelViewProjection;
 in vec4 ciPosition;
 in vec2 ciTexCoord0;
-out vec2 TexCoord0;
-uniform float uAnim;
-out float Offset;
-out vec3 Position;
+
+out VertexData {
+    vec3 Position;
+    float Offset;
+} VertexOut;
 
 float offset(vec2 uv) {
     return (sin(30 * sqrt(pow(0.5 - uv.x, 2) + pow(0.5 - uv.y, 2)) + M_PI * uAnim) + 2 * sin(uv.x * 15.0 - M_PI * uAnim)
@@ -16,9 +18,8 @@ float offset(vec2 uv) {
 
 void main(void) {
     vec4 pos = ciPosition;
-    Offset = offset(ciTexCoord0);
-    pos.y = Offset;
-    Position = pos.xyz;
+    VertexOut.Offset = offset(ciTexCoord0);
+    pos.y = VertexOut.Offset;
+    VertexOut.Position = pos.xyz;
     gl_Position = ciModelViewProjection * pos;
-    TexCoord0 = ciTexCoord0;
 }

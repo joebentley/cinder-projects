@@ -3,10 +3,12 @@
 
 uniform float uAnim;
 uniform vec3 uLightCoord;
-in vec2 TexCoord0;
 out vec4 oColor;
-in float Offset;
-in vec3 Position;
+
+in VertexData {
+    float Offset;
+    vec3 Position;
+} VertexIn;
 
 vec3 hsv2rgb(vec3 c) {
     vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
@@ -15,11 +17,11 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 void main(void) {
-    vec3 X = dFdx(Position);
-    vec3 Y = dFdy(Position);
+    vec3 X = dFdx(VertexIn.Position);
+    vec3 Y = dFdy(VertexIn.Position);
     vec3 normal = cross(X, Y);
 
-    vec3 color = hsv2rgb(vec3(mod(Offset + 0.1 * uAnim, 1.0), 1.0, 1.0));
+    vec3 color = hsv2rgb(vec3(mod(VertexIn.Offset + 0.1 * uAnim, 1.0), 1.0, 1.0));
     color *= clamp(dot(normalize(uLightCoord), normalize(normal)), 0.1, 1.0);
     oColor = vec4(color, 1);
 }
