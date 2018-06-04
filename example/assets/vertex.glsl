@@ -5,11 +5,8 @@ uniform float uAnim;
 uniform mat4 ciModelViewProjection;
 in vec4 ciPosition;
 in vec2 ciTexCoord0;
-
-out VertexData {
-    vec3 Position;
-    float Offset;
-} VertexOut;
+out float Offset;
+out vec3 Normal;
 
 float offset(vec2 uv) {
     return (sin(30 * sqrt(pow(0.5 - uv.x, 2) + pow(0.5 - uv.y, 2)) + M_PI * uAnim) + 2 * sin(uv.x * 15.0 - M_PI * uAnim)
@@ -18,8 +15,12 @@ float offset(vec2 uv) {
 
 void main(void) {
     vec4 pos = ciPosition;
-    VertexOut.Offset = offset(ciTexCoord0);
-    pos.y = VertexOut.Offset;
-    VertexOut.Position = pos.xyz;
+    Offset = offset(ciTexCoord0);
+    pos.y = Offset;
     gl_Position = ciModelViewProjection * pos;
+
+    float d = 0.0001;
+    float dx = (offset(ciTexCoord0 + vec2(d, 0)) - offset(ciTexCoord0)) / d;
+    float dz = (offset(ciTexCoord0 + vec2(0, d)) - offset(ciTexCoord0)) / d;
+    Normal = normalize(vec3(-dx, 1, -dz));
 }

@@ -26,10 +26,9 @@ void BasicApp::setup() {
 
     mGlsl = gl::GlslProg::create(gl::GlslProg::Format()
             .vertex(loadAsset("vertex.glsl"))
-            .geometry(loadAsset("geometry.glsl"))
             .fragment(loadAsset("fragment.glsl")));
 
-    auto plane = geom::Plane().subdivisions(ivec2(300)).size(vec2(3, 3));
+    auto plane = geom::Plane().subdivisions(ivec2(100)).size(vec2(3, 3));
     mPlane = gl::Batch::create(plane, mGlsl);
 
     auto cube = geom::Cube().size(vec3(0.2));
