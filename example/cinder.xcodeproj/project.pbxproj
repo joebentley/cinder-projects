@@ -1,0 +1,805 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		DAEC6E4A24B74A01934534B0 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = EC06DF3372574B80874EC2AC /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				B9EC345557E0455FA5487DFD /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		FB44835A9FDF4A75A79798C1 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = EFF3C606EACE4388914C40A1 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				A5E3BF5645CF4ED1A516F658 /* CMake Rules */,
+			);
+			dependencies = (
+				4397F32C80EC48399D8B42A5 /* PBXTargetDependency */,
+				B28C1BA52AB945E1AD1358B2 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		A9E96718E2924BAC98850D31 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 614A6B0864A54CFBBB4813F7 /* CinderApp.icns */; };
+		D8F9F19420C723B800E3E5AA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2445D6F5CE234725AEA87D79 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46641B650BC340C88E9F496F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C800C02C4B24571A806CC0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA39DCD63D9E4C2280187EDA;
+			remoteInfo = CinderExample;
+		};
+		B3988112D1BA4087B1BD0CA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C800C02C4B24571A806CC0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAEC6E4A24B74A01934534B0;
+			remoteInfo = ZERO_CHECK;
+		};
+		CDFEEC58BF4E40649D24E88A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C800C02C4B24571A806CC0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAEC6E4A24B74A01934534B0;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2445D6F5CE234725AEA87D79 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		614A6B0864A54CFBBB4813F7 /* CinderApp.icns */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = CinderApp.icns; path = ../../../cinder_master/samples/data/CinderApp.icns; sourceTree = SOURCE_ROOT; };
+		88F00DC440D643C3B6C6E411 /* CinderExample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; name = CinderExample; path = CinderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EAFAE3546744779AF91BC82 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D7C95C36DE344EA1AB27EAEF /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		E5CA9F0ECAF34EBBA751A501 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CMakeFiles/CinderExample.dir/Info.plist; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0107A7E1147F4094A9D8AE28 = {
+			isa = PBXGroup;
+			children = (
+				7323D217C8EE40FFA2F81B6D /* CinderExample */,
+				B5EA6D1F2A1747E5823BE218 /* ALL_BUILD */,
+				D287BDF6C7474B3F8A47C44B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A5FCD777F554CC49A1DA9D1 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				2445D6F5CE234725AEA87D79 /* main.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		1ADF5BEC0E2442C0B0C80EE8 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		6851703634104C5C93801679 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5CA9F0ECAF34EBBA751A501 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7323D217C8EE40FFA2F81B6D /* CinderExample */ = {
+			isa = PBXGroup;
+			children = (
+				1A5FCD777F554CC49A1DA9D1 /* Source Files */,
+				6851703634104C5C93801679 /* Resources */,
+				614A6B0864A54CFBBB4813F7 /* CinderApp.icns */,
+				D7C95C36DE344EA1AB27EAEF /* CMakeLists.txt */,
+			);
+			name = CinderExample;
+			sourceTree = "<group>";
+		};
+		B5EA6D1F2A1747E5823BE218 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				1ADF5BEC0E2442C0B0C80EE8 /* CMake Rules */,
+				9EAFAE3546744779AF91BC82 /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		D287BDF6C7474B3F8A47C44B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88F00DC440D643C3B6C6E411 /* CinderExample */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA39DCD63D9E4C2280187EDA /* CinderExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324A661082A441D99913B786 /* Build configuration list for PBXNativeTarget "CinderExample" */;
+			buildPhases = (
+				52892A9750F84A8DA5B33041 /* Resources */,
+				B48B8454216843EC8BB4DCAC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8C4B4FDF8654F2ABDA747C4 /* PBXTargetDependency */,
+			);
+			name = CinderExample;
+			productName = CinderExample;
+			productReference = 88F00DC440D643C3B6C6E411 /* CinderExample */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C800C02C4B24571A806CC0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0940;
+			};
+			buildConfigurationList = 5D87D26BB20B4021B913C092 /* Build configuration list for PBXProject "cinder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0107A7E1147F4094A9D8AE28;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB44835A9FDF4A75A79798C1 /* ALL_BUILD */,
+				FA39DCD63D9E4C2280187EDA /* CinderExample */,
+				DAEC6E4A24B74A01934534B0 /* ZERO_CHECK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52892A9750F84A8DA5B33041 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9E96718E2924BAC98850D31 /* CinderApp.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5E3BF5645CF4ED1A516F658 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/joe/github/cinder-projects/example -f /Users/joe/github/cinder-projects/example/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		B9EC345557E0455FA5487DFD /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/joe/github/cinder-projects/example -f /Users/joe/github/cinder-projects/example/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B48B8454216843EC8BB4DCAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8F9F19420C723B800E3E5AA /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4397F32C80EC48399D8B42A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA39DCD63D9E4C2280187EDA /* CinderExample */;
+			targetProxy = 46641B650BC340C88E9F496F /* PBXContainerItemProxy */;
+		};
+		B28C1BA52AB945E1AD1358B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAEC6E4A24B74A01934534B0 /* ZERO_CHECK */;
+			targetProxy = B3988112D1BA4087B1BD0CA1 /* PBXContainerItemProxy */;
+		};
+		F8C4B4FDF8654F2ABDA747C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAEC6E4A24B74A01934534B0 /* ZERO_CHECK */;
+			targetProxy = CDFEEC58BF4E40649D24E88A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		081F39EC33634124843CA06A /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/joe/github/cinder-projects/example/build";
+			};
+			name = RelWithDebInfo;
+		};
+		1D8C58F59C954CA5BBDD3B93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		2A23C54629934FA4A5CC7DF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/joe/github/cinder-projects/example/build";
+			};
+			name = Release;
+		};
+		2BB83D114CB141D2A38F00C6 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		4C6F737B78CE401EA3B51D77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/joe/github/cinder-projects/example/CinderExample/Debug";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					FT2_BUILD_LIBRARY,
+					FT_DEBUG_LEVEL_TRACE,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/joe/github/cinder-projects/example/CMakeFiles/CinderExample.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"'-std=c++14'",
+					"'-std=gnu++14'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/joe/cinder_master/lib/macosx/Debug/libcinder.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_system.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_filesystem.a,
+					"-framework",
+					Cocoa,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					AVFoundation,
+					"-framework",
+					AudioUnit,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					CoreMedia,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					Accelerate,
+					"-framework",
+					IOSurface,
+					"-framework",
+					IOKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CinderExample;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				SYSTEM_HEADER_SEARCH_PATHS = /Users/joe/cinder_master/include;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		5D8CC9612FC34F8DA1C9C270 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		67CEB878EE3941C6A8439781 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/joe/github/cinder-projects/example/build";
+			};
+			name = MinSizeRel;
+		};
+		735598FA22834828AC029685 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		81C04C68885A429F8F055375 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/joe/github/cinder-projects/example/CinderExample/MinSizeRel";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					FT2_BUILD_LIBRARY,
+					FT_DEBUG_LEVEL_TRACE,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/joe/github/cinder-projects/example/CMakeFiles/CinderExample.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=c++14'",
+					"'-std=gnu++14'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/joe/cinder_master/lib/macosx/Debug/libcinder.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_system.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_filesystem.a,
+					"-framework",
+					Cocoa,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					AVFoundation,
+					"-framework",
+					AudioUnit,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					CoreMedia,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					Accelerate,
+					"-framework",
+					IOSurface,
+					"-framework",
+					IOKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CinderExample;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				SYSTEM_HEADER_SEARCH_PATHS = /Users/joe/cinder_master/include;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		87F123BDEED749CC9A7E36D8 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		8C6675311CAA489CA9DB9608 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		9159C59826244664ADB6C9A8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = MinSizeRel;
+		};
+		BDAF4E7F67344B1FB2FFA7D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk;
+				SYMROOT = "/Users/joe/github/cinder-projects/example/build";
+			};
+			name = Debug;
+		};
+		C706C653F985447290AF94F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/joe/github/cinder-projects/example/CinderExample/Release";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					FT2_BUILD_LIBRARY,
+					FT_DEBUG_LEVEL_TRACE,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/joe/github/cinder-projects/example/CMakeFiles/CinderExample.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=c++14'",
+					"'-std=gnu++14'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/joe/cinder_master/lib/macosx/Debug/libcinder.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_system.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_filesystem.a,
+					"-framework",
+					Cocoa,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					AVFoundation,
+					"-framework",
+					AudioUnit,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					CoreMedia,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					Accelerate,
+					"-framework",
+					IOSurface,
+					"-framework",
+					IOKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CinderExample;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				SYSTEM_HEADER_SEARCH_PATHS = /Users/joe/cinder_master/include;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		CC50C8C93C104AA7A24D9621 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/joe/github/cinder-projects/example/CinderExample/RelWithDebInfo";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",
+					FT2_BUILD_LIBRARY,
+					FT_DEBUG_LEVEL_TRACE,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "/Users/joe/github/cinder-projects/example/CMakeFiles/CinderExample.dir/Info.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"'-std=c++14'",
+					"'-std=gnu++14'",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/joe/cinder_master/lib/macosx/Debug/libcinder.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_system.a,
+					/Users/joe/cinder_master/lib/macosx/libboost_filesystem.a,
+					"-framework",
+					Cocoa,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AudioToolbox,
+					"-framework",
+					AVFoundation,
+					"-framework",
+					AudioUnit,
+					"-framework",
+					CoreAudio,
+					"-framework",
+					CoreMedia,
+					"-framework",
+					CoreVideo,
+					"-framework",
+					Accelerate,
+					"-framework",
+					IOSurface,
+					"-framework",
+					IOKit,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CinderExample;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				SYSTEM_HEADER_SEARCH_PATHS = /Users/joe/cinder_master/include;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		F78E4B91BCAA4032A345A019 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/joe/github/cinder-projects/example";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		324A661082A441D99913B786 /* Build configuration list for PBXNativeTarget "CinderExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C6F737B78CE401EA3B51D77 /* Debug */,
+				C706C653F985447290AF94F3 /* Release */,
+				81C04C68885A429F8F055375 /* MinSizeRel */,
+				CC50C8C93C104AA7A24D9621 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5D87D26BB20B4021B913C092 /* Build configuration list for PBXProject "cinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDAF4E7F67344B1FB2FFA7D5 /* Debug */,
+				2A23C54629934FA4A5CC7DF0 /* Release */,
+				67CEB878EE3941C6A8439781 /* MinSizeRel */,
+				081F39EC33634124843CA06A /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EC06DF3372574B80874EC2AC /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C6675311CAA489CA9DB9608 /* Debug */,
+				F78E4B91BCAA4032A345A019 /* Release */,
+				9159C59826244664ADB6C9A8 /* MinSizeRel */,
+				2BB83D114CB141D2A38F00C6 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EFF3C606EACE4388914C40A1 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				735598FA22834828AC029685 /* Debug */,
+				1D8C58F59C954CA5BBDD3B93 /* Release */,
+				5D8CC9612FC34F8DA1C9C270 /* MinSizeRel */,
+				87F123BDEED749CC9A7E36D8 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C800C02C4B24571A806CC0F /* Project object */;
+}
