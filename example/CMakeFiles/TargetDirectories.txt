@@ -1,0 +1,3 @@
+/Users/joe/github/cinder-projects/example/CMakeFiles/WavyPlane.dir
+/Users/joe/github/cinder-projects/example/CMakeFiles/ALL_BUILD.dir
+/Users/joe/github/cinder-projects/example/CMakeFiles/ZERO_CHECK.dir
