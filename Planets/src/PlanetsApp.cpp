@@ -9,7 +9,7 @@ using namespace std;
 class PlanetsApp : public App {
   public:
 	void setup() override;
-	void mouseDown( MouseEvent event ) override;
+	void mouseDown(MouseEvent event) override;
 	void update() override;
 	void draw() override;
 };
@@ -18,7 +18,7 @@ void PlanetsApp::setup()
 {
 }
 
-void PlanetsApp::mouseDown( MouseEvent event )
+void PlanetsApp::mouseDown(MouseEvent event)
 {
 }
 
@@ -28,7 +28,7 @@ void PlanetsApp::update()
 
 void PlanetsApp::draw()
 {
-	gl::clear( Color( 0, 0, 0 ) );
+	gl::clear(Color(0, 0, 0));
 }
 
 CINDER_APP( PlanetsApp, RendererGl )
