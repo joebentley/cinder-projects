@@ -16,6 +16,8 @@ private:
 };
 
 void BasicApp::setup() {
+    getWindow()->setTitle("Planets");
+
     // Make sure that window initially on top
     getWindow()->setAlwaysOnTop(true);
 
