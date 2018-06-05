@@ -28,7 +28,7 @@ void PlanetsApp::update()
 
 void PlanetsApp::draw()
 {
-	gl::clear(Color(0, 0, 0));
+    gl::clear(Color(0, 0, 0));
 }
 
 CINDER_APP( PlanetsApp, RendererGl )
