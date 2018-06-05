@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(cinder)
+project(WavyPlane)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -10,7 +10,7 @@ include( "${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake" )
 #file(COPY assets DESTINATION .)
 
 ci_make_app(
-        APP_NAME "CinderExample"
+	APP_NAME ${PROJECT_NAME}
         CINDER_PATH ${CINDER_PATH}
         SOURCES main.cpp
 )
