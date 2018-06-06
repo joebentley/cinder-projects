@@ -15,6 +15,7 @@ public:
 	void draw() override;
 private:
     gl::BatchRef mSphere;
+    gl::BatchRef mSun;
     
     CameraPersp mCam;
     vec3 cInitialEyeLocation {2.0f * vec3(4, 3, 4)};
@@ -26,12 +27,18 @@ private:
 
 void PlanetsApp::setup()
 {
-    auto glsl = gl::GlslProg::create(gl::GlslProg::Format()
+    auto lambert = gl::GlslProg::create(gl::GlslProg::Format()
                                      .vertex(loadAsset("vertex.glsl"))
-                                     .fragment(loadAsset("fragment.glsl")));
+                                     .fragment(loadAsset("lambert.glsl")));
+    
+    auto color = gl::GlslProg::create(gl::GlslProg::Format()
+                                        .vertex(loadAsset("vertex.glsl"))
+                                        .fragment(loadAsset("color.glsl")));
     
     auto geomSphere = geom::Sphere().subdivisions(50);
-    mSphere = gl::Batch::create(geomSphere, glsl);
+    mSphere = gl::Batch::create(geomSphere, lambert);
+    mSun = gl::Batch::create(geomSphere, color);
+    
     gl::enableDepth();
 }
 
@@ -62,7 +69,7 @@ void PlanetsApp::draw()
     
     gl::color(1, 0.5, 0);
     
-    mSphere->draw();
+    mSun->draw();
 }
 
 void PlanetsApp::mouseDown(MouseEvent event)
