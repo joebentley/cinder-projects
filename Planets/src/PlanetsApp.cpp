@@ -16,8 +16,9 @@ public:
 private:
     gl::BatchRef mSphere;
     CameraPersp mCam;
-    vec3 mEyeLocation {4, 3, 4};
+    vec3 cInitialEyeLocation {4, 3, 4};
     const float cRotationPerFrame;
+    quat mRotation {0, vec3(0, 1, 0)};
 };
 
 void PlanetsApp::setup()
@@ -43,9 +44,9 @@ void PlanetsApp::update()
 void PlanetsApp::draw()
 {
     gl::clear(Color(0, 0, 0));
-    mEyeLocation = vec3(glm::rotate(cRotationPerFrame, vec3(0, 1, 0)) * vec4(mEyeLocation, 0));
-    
-    mCam.lookAt(mEyeLocation, vec3(0));
+    mRotation *= angleAxis(cRotationPerFrame, vec3(0, 1, 0));
+    auto eyeLocation = mRotation * cInitialEyeLocation;
+    mCam.lookAt(eyeLocation, vec3(0));
     gl::setMatrices(mCam);
     mSphere->draw();
 }
