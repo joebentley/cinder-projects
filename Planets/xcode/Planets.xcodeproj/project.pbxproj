@@ -20,6 +20,8 @@
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A44F0ED8E1F34EAB82CE5647 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 208199E30ACF4BDA8671527B /* CinderApp.icns */; };
+		D862FC1720C7C43F00187C8A /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D862FC1520C7C43F00187C8A /* fragment.glsl */; };
+		D862FC1820C7C43F00187C8A /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D862FC1620C7C43F00187C8A /* vertex.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		7024DB3298AF4CC8A7C05EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B327F517460840FD82C79453 /* Planets_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = Planets_Prefix.pch; sourceTree = "<group>"; };
+		D862FC1520C7C43F00187C8A /* fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
+		D862FC1620C7C43F00187C8A /* vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 		29B97314FDCFA39411CA2CEA /* Planets */ = {
 			isa = PBXGroup;
 			children = (
+				D862FC1420C7C43F00187C8A /* assets */,
 				01B97315FEAEA392516A2CEA /* Blocks */,
 				29B97315FDCFA39411CA2CEA /* Headers */,
 				080E96DDFE201D6D7F000001 /* Source */,
@@ -154,6 +159,16 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D862FC1420C7C43F00187C8A /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				D862FC1520C7C43F00187C8A /* fragment.glsl */,
+				D862FC1620C7C43F00187C8A /* vertex.glsl */,
+			);
+			name = assets;
+			path = ../assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +224,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D862FC1820C7C43F00187C8A /* vertex.glsl in Resources */,
 				A44F0ED8E1F34EAB82CE5647 /* CinderApp.icns in Resources */,
+				D862FC1720C7C43F00187C8A /* fragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

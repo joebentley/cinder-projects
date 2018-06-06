@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../../assets"
+      name = "assets">
+      <FileRef
+         location = "group:fragment.glsl">
+      </FileRef>
+      <FileRef
+         location = "group:vertex.glsl">
+      </FileRef>
+   </Group>
    <FileRef
       location = "self:">
    </FileRef>
