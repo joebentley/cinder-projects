@@ -53,9 +53,11 @@ void PlanetsApp::draw()
     
     gl::pushMatrices();
     
-    auto anim = static_cast<double>(getElapsedSeconds());
-    gl::rotate(M_PI * anim, vec3(0, 1, 0));
-    gl::translate(3, 0, 0);
+    auto angle = static_cast<float>(0.5 * M_PI * getElapsedSeconds());
+    auto planetPosMatrix = glm::rotate(angle, vec3(0, 1, 0))
+                         * glm::translate(vec3(3, 0, 0));
+
+    gl::multModelMatrix(planetPosMatrix);
     
     gl::color(0.8, 0.8, 0.8);
     
@@ -63,6 +65,19 @@ void PlanetsApp::draw()
     mSphere->getGlslProg()->uniform("uLightCoord",
         glm::normalize(vec3(invModelMatrix * vec4(mLightCoord, 1))));
     
+    mSphere->draw();
+    
+    gl::popMatrices();
+    gl::pushMatrices();
+    
+    gl::multModelMatrix(planetPosMatrix);
+    gl::rotate(2 * angle, vec3(0, 1, 0));
+    gl::translate(2, 0, 0);
+    gl::scale(vec3(0.3));
+    
+    invModelMatrix = glm::inverse(gl::getModelMatrix());
+    mSphere->getGlslProg()->uniform("uLightCoord",
+                                    glm::normalize(vec3(invModelMatrix * vec4(mLightCoord, 1))));
     mSphere->draw();
     
     gl::popMatrices();
