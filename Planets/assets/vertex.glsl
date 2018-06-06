@@ -6,6 +6,10 @@ in vec3 ciNormal;
 in vec4 ciColor;
 out vec4 Color;
 
+out Light {
+    vec3 LightCoord;
+} LightOut;
+
 out VertexData {
     vec3 Normal;
 } VertexOut;
