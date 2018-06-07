@@ -163,12 +163,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D862FC1420C7C43F00187C8A /* assets */ = {
+		D822FD4420C9B09000892C63 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
 				D862FC1520C7C43F00187C8A /* lambert.glsl */,
 				D862FC1620C7C43F00187C8A /* vertex.glsl */,
 				D822FD4220C8638400892C63 /* color.glsl */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		D862FC1420C7C43F00187C8A /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				D822FD4420C9B09000892C63 /* shaders */,
 			);
 			name = assets;
 			path = ../assets;

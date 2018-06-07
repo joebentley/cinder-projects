@@ -44,13 +44,12 @@ mat4 Planet::getModelMatrix() {
 }
 
 void Planet::draw(vec3 lightCoord) {
-    gl::pushMatrices();
+    gl::ScopedModelMatrix scpMtx;
     gl::multModelMatrix(getModelMatrix());
     auto invModelMatrix = glm::inverse(gl::getModelMatrix());
     mBatch->getGlslProg()->uniform("uLightCoord",
                                     glm::normalize(vec3(invModelMatrix * vec4(lightCoord, 1))));
     mBatch->draw();
-    gl::popMatrices();
 }
 
 class PlanetsApp : public App {
