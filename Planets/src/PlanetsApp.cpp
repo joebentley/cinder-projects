@@ -76,12 +76,12 @@ private:
 void PlanetsApp::setup()
 {
     auto lambert = gl::GlslProg::create(gl::GlslProg::Format()
-                                     .vertex(loadAsset("vertex.glsl"))
-                                     .fragment(loadAsset("lambert.glsl")));
+                                     .vertex(loadAsset("shaders/vertex.glsl"))
+                                     .fragment(loadAsset("shaders/lambert.glsl")));
     
     auto color = gl::GlslProg::create(gl::GlslProg::Format()
-                                        .vertex(loadAsset("vertex.glsl"))
-                                        .fragment(loadAsset("color.glsl")));
+                                        .vertex(loadAsset("shaders/vertex.glsl"))
+                                        .fragment(loadAsset("shaders/color.glsl")));
     
     auto geomSphere = geom::Sphere().subdivisions(50);
     auto planetBatch = gl::Batch::create(geomSphere, lambert);
