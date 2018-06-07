@@ -14,7 +14,7 @@ void main(void) {
     vec4 color = texture(uTex0, TexCoord0);
     
     vec3 c = color.xyz;
-    c *= clamp(dot(uLightCoord, VertexIn.Normal), 0.2, 1);
+    c *= clamp(0.4 + dot(uLightCoord, VertexIn.Normal), 0.2, 1);
     
     oColor = vec4(c, 1.0);
 }
