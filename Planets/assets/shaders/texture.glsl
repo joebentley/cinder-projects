@@ -6,5 +6,4 @@ out vec4 oColor;
 
 void main(void) {
     oColor = texture(uTex0, TexCoord0);
-//    oColor = vec4(1, 1, 1, 1);
 }

@@ -98,18 +98,18 @@ private:
 
 void PlanetsApp::setup()
 {
-    auto lambert = gl::GlslProg::create(gl::GlslProg::Format()
+    auto glslNoLight = gl::GlslProg::create(gl::GlslProg::Format()
                                      .vertex(loadAsset("shaders/vertex.glsl"))
-                                     .fragment(loadAsset("shaders/lambert.glsl")));
-    
-    auto textureShader = gl::GlslProg::create(gl::GlslProg::Format()
-                                        .vertex(loadAsset("shaders/vertex.glsl"))
-                                        .fragment(loadAsset("shaders/texture.glsl")));
+                                     .fragment(loadAsset("shaders/texture.glsl")));
+    auto glsl = gl::GlslProg::create(gl::GlslProg::Format()
+                                    .vertex(loadAsset("shaders/vertex.glsl"))
+                                    .fragment(loadAsset("shaders/textureLambert.glsl")));
     
     auto geomSphere = geom::Sphere().subdivisions(50);
-    auto planetBatch = gl::Batch::create(geomSphere, textureShader);
+    auto planetBatch = gl::Batch::create(geomSphere, glsl);
+    auto sunBatch = gl::Batch::create(geomSphere, glslNoLight);
     
-    mSun = std::make_unique<Planet>(planetBatch);
+    mSun = std::make_unique<Planet>(sunBatch);
     mSun->setOrbitingRadius(0)
         .setTexture(gl::Texture2d::create(loadImage(loadAsset("textures/sun.jpg"))));
     mEarth = std::make_unique<Planet>(planetBatch);
@@ -134,9 +134,9 @@ void PlanetsApp::draw()
     auto angle = static_cast<float>(0.5 * M_PI * getElapsedSeconds());
     gl::color(0.8, 0.8, 0.8);
     
-    mEarth->draw();
+    mEarth->draw(mLightCoord);
     mEarth->setOrbitingAngle(angle);
-    mMoon->draw();
+    mMoon->draw(mLightCoord);
     mMoon->setOrbitingAngle(2 * angle);
     mSun->draw();
 }
