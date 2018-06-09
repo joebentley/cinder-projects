@@ -5,7 +5,7 @@
 
 #include <deque>
 
-#define DEBUG___
+//#define DEBUG___
 
 using namespace ci;
 using namespace ci::app;
@@ -37,13 +37,13 @@ private:
     float calculateMovingAverageValue(int i) const;
     
     gl::GlslProgRef mGlsl;
-    vec3 mLightCoord {1, 1, -1};
+    vec3 mLightCoord {1.5, 1, -1};
 };
 
 void SpectrumApp::setup()
 {
-    mCam.lookAt(vec3(0, 1.5, 4), vec3(0, 0, 0));
-    mCam.setFovHorizontal(60);
+    mCam.lookAt(vec3(0, 1.7, 4), vec3(0, 0.2, 0));
+    mCam.setPerspective(30, getWindowAspectRatio(), 0.1, 1000);
     
     const auto geom = geom::Cube();
     
@@ -144,7 +144,7 @@ void SpectrumApp::keyDown(cinder::app::KeyEvent event) {
 
 void settingsFn(SpectrumApp::Settings *settings) {
     settings->setHighDensityDisplayEnabled(true);
-    settings->setWindowSize(ivec2(600, 300));
+    settings->setWindowSize(ivec2(800, 400));
 //    settings->setResizable(false);
 }
 
