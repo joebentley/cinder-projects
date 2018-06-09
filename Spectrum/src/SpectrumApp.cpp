@@ -2,6 +2,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/audio/audio.h"
+#include "cinder/Easing.h"
 
 #include <deque>
 
@@ -31,6 +32,9 @@ private:
     const float cBarSpacing {0.01f};
     float mMaxMagnitudeSoFar {0};
     
+    const vec3 cInitialCamPos {0, 1.7, 4};
+    const vec3 cLookingAtPos {0, 0.2, 0};
+    
     const size_t cMovingAverageLength {3};
     std::deque<std::vector<float>> mMovingAverageValues;
     
@@ -42,7 +46,7 @@ private:
 
 void SpectrumApp::setup()
 {
-    mCam.lookAt(vec3(0, 1.7, 4), vec3(0, 0.2, 0));
+    mCam.lookAt(cInitialCamPos, cLookingAtPos);
     mCam.setPerspective(30, getWindowAspectRatio(), 0.1, 1000);
     
     const auto geom = geom::Cube();
@@ -77,6 +81,11 @@ void SpectrumApp::draw()
     gl::clear( Color( 0, 0, 0 ) );
     gl::setMatrices(mCam);
     
+    const float anim = fmod(0.3f * getElapsedSeconds(), 2.0f);
+    
+    const auto angle = static_cast<float>(M_PI * (easeInOutAtan(fmod(anim, 1.0f), 5.5f) + (anim > 1.0f ? 1.0f : 0.0f)));
+    mCam.lookAt(vec3(glm::rotate(angle, vec3(0, 1, 0)) * vec4(cInitialCamPos, 1)), cLookingAtPos);
+    
     mGlsl->uniform("uLightCoord", glm::normalize(mLightCoord));
     
 #ifdef DEBUG___
@@ -98,11 +107,11 @@ void SpectrumApp::draw()
         if (mag > mMaxMagnitudeSoFar)
             mMaxMagnitudeSoFar = mag;
         
-        const auto magNormalized = pow(mag / mMaxMagnitudeSoFar, cGraphPower);
+        const auto magNormalized = clamp(pow(mag / mMaxMagnitudeSoFar, cGraphPower), 0.05f, 1.0f);
         
         gl::ScopedModelMatrix scpMtx;
         gl::ScopedColor scpCol;
-        gl::translate(vec3((i - cNumFftBins / 2 + 1) * (cBarWidth + cBarSpacing), magNormalized / 2, 0));
+        gl::translate(vec3((i - cNumFftBins / 2 + 1) * (cBarWidth + cBarSpacing), /*0*/ magNormalized / 2, 0));
         gl::scale(vec3(cBarWidth, 0.5 * magNormalized, 3 * magNormalized));
         gl::color(Color(CM_HSV, (float)i / cNumFftBins, 1, 1));
         mSegment->draw();
