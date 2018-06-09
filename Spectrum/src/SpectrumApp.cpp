@@ -74,9 +74,19 @@ void SpectrumApp::setup()
     
     const auto ctx = audio::Context::master();
     ctx->enable();
-    const auto device = audio::Device::findDeviceByName("Loopback Audio");
-    const auto input = ctx->createInputDeviceNode(device);
-    input >> ctx->getOutput();
+    const auto &devices = audio::Device::getDevices();
+    
+    audio::InputDeviceNodeRef input = nullptr;
+    
+    if (std::find_if(devices.cbegin(), devices.cend(),
+                  [] (const audio::DeviceRef &device) { return device->getName() == "Loopback Audio"; }) != devices.cend())
+    {
+        input = ctx->createInputDeviceNode(audio::Device::findDeviceByName("Loopback Audio"));
+        input >> ctx->getOutput();
+    } else {
+        input = ctx->createInputDeviceNode();
+    }
+    
     input->enable();
     
     mSpectral = ctx->makeNode<audio::MonitorSpectralNode>(audio::MonitorSpectralNode::Format()
