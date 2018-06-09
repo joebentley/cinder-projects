@@ -34,8 +34,10 @@ private:
     const float cMinimumBarHeight {0.04f};
     float mMaxMagnitudeSoFar {0.01f};
     
+    const vec2 cMaxScaleFactor {0.3f, 1.6f};
+    
     const float cInitialRotationDelay {0.5f};
-    const float cCameraZoomAmount {0.3f};
+    const float cCameraZoomAmount {0.1f};
     
     const vec3 cInitialCamPos {0, 1.7, 4};
     const vec3 cLookingAtPos {0, 0.2, 0};
@@ -47,6 +49,7 @@ private:
     
     const size_t cVolumeMovAvgValues {5};
     std::deque<float> mVolumeMovAvgValues;
+    float mMaxVolumeSoFar {0};
     
     gl::GlslProgRef mGlsl;
     vec3 mLightCoord {1.5, 1, -1};
@@ -118,7 +121,12 @@ void SpectrumApp::draw()
     
     averageVolume /= cVolumeMovAvgValues;
     
-    const auto zoom = 1 - cCameraZoomAmount * averageVolume;
+    if (averageVolume > mMaxVolumeSoFar)
+        mMaxVolumeSoFar = averageVolume;
+    
+    const auto normalizedVolume = averageVolume / mMaxVolumeSoFar;
+    
+    const auto zoom = 1 - cCameraZoomAmount * normalizedVolume;
     eyePosition = zoom * eyePosition;
     
     mCam.lookAt(eyePosition, cLookingAtPos);
@@ -132,7 +140,7 @@ void SpectrumApp::draw()
     gl::popMatrices();
     
     gl::pushMatrices();
-    const auto vol = 2 * averageVolume;
+    const auto vol = 2 * normalizedVolume;
     gl::translate(vec3(0.5, vol, 0.5));
     mDebugLight->draw();
     gl::popMatrices();
@@ -154,8 +162,8 @@ void SpectrumApp::draw()
         
         gl::ScopedModelMatrix scpMtx;
         gl::ScopedColor scpCol;
-        gl::translate(vec3((i - cNumFftBins / 2 + 1) * (cBarWidth + cBarSpacing), /*0*/ magNormalized / 2, 0));
-        gl::scale(vec3(cBarWidth, 0.5 * magNormalized, 3 * magNormalized));
+        gl::translate(vec3((i - cNumFftBins / 2 + 1) * (cBarWidth + cBarSpacing), /*0*/ cMaxScaleFactor.x * magNormalized, 0));
+        gl::scale(vec3(cBarWidth, cMaxScaleFactor * magNormalized));
         gl::color(Color(CM_HSV, (float)i / cNumFftBins, 1, 1));
         mSegment->draw();
     }
