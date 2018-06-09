@@ -32,7 +32,7 @@ private:
     const float cBarWidth {0.04f};
     const float cBarSpacing {0.01f};
     const float cMinimumBarHeight {0.04f};
-    float mMaxMagnitudeSoFar {0.01f};
+    float mMaxMagnitudeSoFar {0.00001f};
     
     const vec2 cMaxScaleFactor {0.3f, 1.6f};
     
@@ -49,7 +49,11 @@ private:
     
     const size_t cVolumeMovAvgValues {5};
     std::deque<float> mVolumeMovAvgValues;
-    float mMaxVolumeSoFar {0};
+    float mMaxVolumeSoFar {0.00001f};
+    float mMaxVolumeDifferenceSoFar {0.00001f};
+    
+    const size_t cMovAvgTransientTimesLength {1000};
+    std::deque<float> mMovAvgTransientTimes;
     
     gl::GlslProgRef mGlsl;
     vec3 mLightCoord {1.5, 1, -1};
@@ -116,14 +120,12 @@ void SpectrumApp::draw()
         mVolumeMovAvgValues.pop_back();
     
     float averageVolume = 0;
-    for (auto f : mVolumeMovAvgValues)
-        averageVolume += f;
+    for (const auto vol : mVolumeMovAvgValues)
+        averageVolume += vol;
     
     averageVolume /= cVolumeMovAvgValues;
-    
     if (averageVolume > mMaxVolumeSoFar)
         mMaxVolumeSoFar = averageVolume;
-    
     const auto normalizedVolume = averageVolume / mMaxVolumeSoFar;
     
     const auto zoom = 1 - cCameraZoomAmount * normalizedVolume;
@@ -152,8 +154,11 @@ void SpectrumApp::draw()
     if (mMovingAverageValues.size() > cMovingAverageLength)
         mMovingAverageValues.pop_back();
     
+    // TODO: Sort out transient stuff
+//    float averageBassMagnitude = 0;
     for (int i = 0; i < cNumFftBins; ++i) {
         const auto mag = calculateMovingAverageValue(i);
+        
         if (mag > mMaxMagnitudeSoFar)
             mMaxMagnitudeSoFar = mag;
         
@@ -166,7 +171,33 @@ void SpectrumApp::draw()
         gl::scale(vec3(cBarWidth, cMaxScaleFactor * magNormalized));
         gl::color(Color(CM_HSV, (float)i / cNumFftBins, 1, 1));
         mSegment->draw();
+        
+//        if (i < 6)
+//            averageBassMagnitude += magNormalized;
     }
+    
+//    averageBassMagnitude /= 6;
+//
+//    if (averageBassMagnitude > 0.4) {
+//        // transient kind-of detected (maybe?)
+//
+//        mMovAvgTransientTimes.push_back((float)getElapsedSeconds());
+//        if (mMovAvgTransientTimes.size() > cMovAvgTransientTimesLength)
+//            mMovAvgTransientTimes.pop_front();
+//
+//        float avgTimeBetweenTransient = 0;
+//        float prevTime = 0;
+//        for (auto val : mMovAvgTransientTimes) {
+//            avgTimeBetweenTransient = val - prevTime;
+//            prevTime = avgTimeBetweenTransient;
+//        }
+//
+//        avgTimeBetweenTransient /= (mMovAvgTransientTimes.size() - 1);
+//
+//        const auto avgBPM = 60.0f / avgTimeBetweenTransient;
+//
+//        console() << avgTimeBetweenTransient << " " << avgBPM << std::endl;
+//    }
 }
 
 float SpectrumApp::calculateMovingAverageValue(int i) const {
