@@ -3,6 +3,8 @@
 #include "cinder/gl/gl.h"
 #include "cinder/audio/audio.h"
 
+#include <deque>
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;
@@ -20,6 +22,11 @@ private:
     const float cBarWidth {0.05f};
     const float cBarSpacing {0.01f};
     float mMaxMagnitudeSoFar {0};
+    
+    const size_t cMovingAverageLength {3};
+    std::deque<std::vector<float>> mMovingAverageValues;
+    
+    float calculateMovingAverageValue(int i) const;
 };
 
 void SpectrumApp::setup()
@@ -52,8 +59,12 @@ void SpectrumApp::draw()
     
     const auto &magSpectrum = mSpectral->getMagSpectrum();
 
+    mMovingAverageValues.push_front(magSpectrum);
+    if (mMovingAverageValues.size() > cMovingAverageLength)
+        mMovingAverageValues.pop_back();
+    
     for (int i = 0; i < cNumFftBins; ++i) {
-        const auto mag = magSpectrum[i];
+        const auto mag = calculateMovingAverageValue(i);
         if (mag > mMaxMagnitudeSoFar)
             mMaxMagnitudeSoFar = mag;
         
@@ -66,5 +77,20 @@ void SpectrumApp::draw()
         mSegment->draw();
     }
 }
+
+float SpectrumApp::calculateMovingAverageValue(int i) const {
+    if (mMovingAverageValues.empty())
+        return 0;
+    
+    float sum = 0;
+    
+    for (const auto &vec : mMovingAverageValues) {
+        auto val = vec[i];
+        sum += val;
+    }
+    
+    return sum / cMovingAverageLength;
+}
+
 
 CINDER_APP( SpectrumApp, RendererGl(RendererGl::Options().msaa(16)) )
