@@ -18,6 +18,7 @@ private:
     CameraPersp mCam;
     audio::MonitorSpectralNodeRef mSpectral;
     
+    const float cGraphPower {0.8/*1*/};
     const int cNumFftBins {50};
     const float cBarWidth {0.05f};
     const float cBarSpacing {0.01f};
@@ -31,7 +32,7 @@ private:
 
 void SpectrumApp::setup()
 {
-    mCam.lookAt(vec3(0, 2, 4), vec3(0, 0.8, 0));
+    mCam.lookAt(vec3(0, 1.5, 4), vec3(0, 0, 0));
     mCam.setFovHorizontal(60);
     
     const auto shaderDef = gl::ShaderDef().color().lambert();
@@ -68,7 +69,7 @@ void SpectrumApp::draw()
         if (mag > mMaxMagnitudeSoFar)
             mMaxMagnitudeSoFar = mag;
         
-        const auto magNormalized = mag / mMaxMagnitudeSoFar;
+        const auto magNormalized = pow(mag / mMaxMagnitudeSoFar, cGraphPower);
         
         gl::ScopedModelMatrix scpMtx;
         gl::translate(vec3((i - cNumFftBins / 2) * (cBarWidth + cBarSpacing), magNormalized / 2, 0));
